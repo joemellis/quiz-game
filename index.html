@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+  </head>
+  <body>
+    <div class="app">
+      <h1>Joes Quiz</h1>
+      <div class="quiz">
+        <h2 id="question">Question goes here</h2>
+        <div id="answer-buttons">
+          <button class="btn">Answer 1</button>
+          <button class="btn">Answer 2</button>
+          <button class="btn">Answer 3</button>
+          <button class="btn">Answer 4</button>
+        </div>
+        <button id="next-btn">Next</button>
+      </div>
+    </div>
+    <div class="button-wrapper">
+      <button class="confetti-button">Yay🎉</button>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script>
+      document.getElementsByClassName("confetti-button")[0].addEventListener("click", () => {
+        let canvas = document.createElement("canvas");
+        canvas.width = 600;
+        canvas.height = 600;
+        let container = document.getElementsByClassName("button-wrapper")[0];
+        container.appendChild(canvas);
+
+        let confetti_button = confetti.create(canvas);
+        confetti_button({
+          particleCount: 200,
+          spread: 200,
+          startVelocity: 15,
+          scalar: 0.9,
+          ticks: 90
+        }).then(() => container.removeChild(canvas));
+      });
+    </script>
+    <script src="script.js"></script>
+  </body>
+</html>
